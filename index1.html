@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //Задание №1
+    const arr = [1, 5, 7, 9];
+    const minNumber = Math.min(...arr);
+    console.log(minNumber);
+
+    //Задание №2
+    function createCounter() {
+    let count = 0; // Приватное свойство
+    return {
+        increment() {
+            count++;
+            return count;
+        },
+        decrement() {
+            count--;
+            return count;
+        },
+        getValue() {
+            return count; // Для получения текущего значения счетчика (если нужно)
+        }
+        };
+    }
+
+    const counter = createCounter();
+    console.log(counter.increment()); // Ожидаемый вывод: 1
+    console.log(counter.increment()); // Ожидаемый вывод: 2
+    console.log(counter.decrement()); // Ожидаемый вывод: 1
+    console.log(counter.getValue()); // Ожидаемый вывод: 1
+
+    //Задание №3
+    function findElementByClass(root, className) {
+        if (root.classList.contains(className)) {
+            return root;
+        }
+        for (let i = 0; i < root.children.length; i++) {
+            const found = findElementByClass(root.children[i], className);
+            if (found) {
+                return found;
+            }
+        }
+        return null; // Если элемент с таким классом не найден
+    }
+
+    const rootElement = document.getElementById('root');
+    const targetElement = findElementByClass(rootElement, 'my-class');
+    console.log(targetElement); // Ожидаемый вывод: элемент с классом 'my-class', если найден
+    </script>
+</body>
+</html>
